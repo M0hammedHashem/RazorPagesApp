@@ -1,45 +1,63 @@
-# ASP.NET Razor Pages CRUD Application with EF Core and N-Tier Architecture
+# Category Management System - ASP.NET Razor Pages
 
-![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-6.0-blue)
-![EF Core](https://img.shields.io/badge/EF%20Core-6.0-green)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-7952B3)
+![.NET](https://img.shields.io/badge/.NET-6.0-%23512BD4)
+![EF Core](https://img.shields.io/badge/EF%20Core-7.0-green)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.2-blueviolet)
 
-A complete Category management system implementing CRUD operations using modern web development technologies and architectural patterns.
+A robust category management system implementing CRUD operations with modern architecture and UI components.
 
-## Features
+![Category Management Interface](screenshots/screenshot.png)
 
-- 🗂️ Full CRUD (Create, Read, Update, Delete) operations
-- 🏗️ N-Tier Architecture implementation
-- 🎨 Responsive UI with Bootstrap 5
-- 📢 Toastr notifications for user feedback
-- 💉 Dependency Injection implementation
-- 📊 Entity Framework Core for data access
-- 🔐 SQL Server database integration
-- 🧩 Separation of concerns with layered architecture
+## Key Features
 
-## Technologies Used
+- 🚀 Complete Category CRUD Operations
+- 📁 N-Layer Architecture Implementation
+- 🎯 Repository Pattern & Dependency Injection
+- 📱 Responsive Bootstrap 5 Design
+- 📢 Toastr Notifications for User Feedback
+- 🗄️ SQL Server Database Integration
+- 📦 Entity Framework Core 7 Data Access
 
-- **Backend**: ASP.NET Core 6 (Razor Pages)
-- **ORM**: Entity Framework Core 6
-- **Database**: SQL Server
-- **Frontend**: 
-  - Bootstrap 5
-  - Toastr notifications
-  - HTML5/CSS3
-- **Architecture**: N-Tier (Presentation, Application, Infrastructure, Domain)
-- **Tools**: Dependency Injection, Repository Pattern
+## Project Structure
+RazorPagesApp/
+├── Data/ # Database context and configurations
+├── Models/ # Domain entities and DTOs
+├── Pages/ # Razor Pages and page models
+│ └── Categories/ # Category-related pages
+├── Services/ # Business logic layer
+├── wwwroot/ # Static assets
+│ ├── css/ # Custom styles
+│ ├── js/ # JavaScript files
+│ └── lib/ # Third-party libraries
+├── appsettings.json # Configuration settings
+└── Program.cs # Startup configuration
 
-## Prerequisites
 
-- [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
-- [Visual Studio 2022+](https://visualstudio.microsoft.com/) or VS Code
-- SQL Server (LocalDB or Express)
-- Web browser
+## Getting Started
 
-## Installation
+### Prerequisites
 
-1. **Clone the repository**
+- .NET 6 SDK
+- SQL Server (LocalDB included with Visual Studio)
+- Visual Studio 2022+ or VS Code
+
+### Installation
+
+1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/category-crud-app.git
-   cd category-crud-app
-   
+   git clone https://github.com/M0hammedHashem/RazorPagesApp.git
+   cd RazorPagesApp
+Configure the database:
+
+Update connection string in appsettings.json:
+
+json
+"DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=CategoryDB;Trusted_Connection=True;"
+Apply migrations:
+
+bash
+dotnet ef database update
+Run the application:
+
+bash
+dotnet run
