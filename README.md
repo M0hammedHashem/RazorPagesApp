@@ -47,17 +47,13 @@ RazorPagesApp/
    ```bash
    git clone https://github.com/M0hammedHashem/RazorPagesApp.git
    cd RazorPagesApp
-Configure the database:
-
+2. Configure the database:
 Update connection string in appsettings.json:
-
-json
-"DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=CategoryDB;Trusted_Connection=True;"
+   ```bash
+    "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=CategoryDB;Trusted_Connection=True;"
 Apply migrations:
+   ```bash
+     dotnet ef database update
 
-bash
-dotnet ef database update
-Run the application:
 
-bash
-dotnet run
+   
