@@ -1,99 +1,211 @@
-markdown
-# Category Management System - ASP.NET Razor Pages
+# web-app-template
 
-[![.NET](https://img.shields.io/badge/.NET-6.0-%23512BD4)](https://dotnet.microsoft.com/)
-[![EF Core](https://img.shields.io/badge/EF%20Core-7.0-green)](https://learn.microsoft.com/en-us/ef/core/)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.2-blueviolet)](https://getbootstrap.com/)
+Framework agnostic web app template. This project is like [Create React App](https://github.com/facebook/create-react-app) except React is removed.
 
-A robust category management system implementing CRUD operations with modern architecture and UI components.
+[View web app.](https://remarkablemark.github.io/web-app-template/)
 
-## Key Features
+## Prerequisites
 
-- 🚀 Complete Category CRUD Operations
-- 📁 N-Layer Architecture Implementation
-- 🎯 Repository Pattern & Dependency Injection
-- 📱 Responsive Bootstrap 5 Design
-- 📢 Toastr Notifications for User Feedback
-- 🗄️ SQL Server Database Integration
-- 📦 Entity Framework Core 7 Data Access
+- [Node.js](https://nodejs.org/en/download/)
 
-## Project Structure
-RazorPagesApp/
-├── Data/ # Database context and configurations
-├── Models/ # Domain entities and DTOs
-├── Pages/ # Razor Pages and page models
-│ └── Categories/ # Category-related pages
-├── Services/ # Business logic layer
-├── wwwroot/ # Static assets
-│ ├── css/ # Custom styles
-│ ├── js/ # JavaScript files
-│ └── lib/ # Third-party libraries
-├── appsettings.json # Configuration settings
-└── Program.cs # Startup configuration
+## Install
 
+Clone the repository:
 
-## Getting Started
+```sh
+git clone https://github.com/remarkablemark/web-app-template.git
+cd web-app-template
+```
+Key Features
+🚀 Complete Category CRUD Operations
+📁 N-Layer Architecture Implementation
+🎯 Repository Pattern & Dependency Injection
+📱 Responsive Bootstrap 5 Design
+📢 Toastr Notifications for User Feedback
+🗄️ SQL Server Database Integration
+📦 Entity Framework Core 7 Data Access
+Rename the project:
 
-### Prerequisites
+```sh
+git grep -l web-app-template | xargs sed -i '' -e 's/web-app-template/my-app/g'
+git grep -l 'Web App Template' | xargs sed -i '' -e 's/Web App Template/My App Template/g'
+git grep -l 'Web App' | xargs sed -i '' -e 's/Web App/My App/g'
+```
 
-- .NET 6 SDK
-- SQL Server (LocalDB included with Visual Studio)
-- Visual Studio 2022+ or VS Code
+Update the files:
 
-### Installation
+- [ ] `README.md`
+- [ ] `package.json`
+- [ ] `public/index.html`
+- [ ] `public/manifest.json`
+- [ ] `src/index.js`
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/M0hammedHashem/RazorPagesApp.git
-   cd RazorPagesApp
-Configure the database:
+Install the dependencies:
 
-Update connection string in appsettings.json:
+```sh
+npm install
+```
 
-json
-"DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=CategoryDB;Trusted_Connection=True;"
-Apply migrations:
+Initialize a new repository:
 
-bash
-dotnet ef database update
-Run the application:
+```sh
+rm -rf .git
+git init
+```
 
-bash
-dotnet run
-Key Implementation Details
-Dependency Injection Setup
-csharp
-// Program.cs
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+Make your first commit:
 
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-Repository Pattern Implementation
-csharp
-// Services/CategoryService.cs
-public class CategoryService : ICategoryService
-{
-    private readonly ApplicationDbContext _db;
+```sh
+git add .
+git commit -m 'feat: initialize project from web-app-template'
+```
 
-    public CategoryService(ApplicationDbContext db)
-    {
-        _db = db;
-    }
+> Commit messages follow the [Conventional Commits](https://conventionalcommits.org/) format, which is used during release.
 
-    public async Task CreateCategory(Category category)
-    {
-        await _db.Categories.AddAsync(category);
-        await _db.SaveChangesAsync();
-    }
-    // Other CRUD methods...
-}
-Toastr Notification Integration
-javascript
-// wwwroot/js/notification.js
-function showNotification(message, type) {
-    toastr.options = {
-        positionClass: "toast-bottom-right",
-        preventDuplicates: true
-    };
-    toastr[type](message);
-}
+Once you're ready, [push the local repository to GitHub](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) (or another remote repository):
+
+```sh
+git remote add origin <remote-repository-url>
+git push origin -u origin master
+```
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.
+
+You will also see any lint errors in the console.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.
+
+It correctly bundles in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+
+Your app is ready to be deployed!
+
+See the section about [deployment](https://create-react-app.dev/docs/deployment/) for more information.
+
+### `npm run release`
+
+Bumps the `package.json` version with [standard-version](https://github.com/conventional-changelog/standard-version).
+
+### `npm run deploy`
+
+Deploys the app to [GitHub Pages](https://pages.github.com/) by force pushing the `build` folder to the remote repository's `gh-pages` branch.
+
+## Environment Variables
+
+Environment variables work similarly to [Create React App](https://create-react-app.dev/docs/adding-custom-environment-variables/) except they begin with `WEB_APP_` instead of `REACT_APP_`.
+
+For example:
+
+```
+# .env
+WEB_APP_VERSION=$npm_package_version
+WEB_APP_DOMAIN=www.example.com
+WEB_APP_FOO=$DOMAIN/foo
+```
+
+## Testing
+
+Tests are run just like [Create React App](https://create-react-app.dev/docs/running-tests):
+
+```sh
+npm test
+```
+
+## Build
+
+You can build the production app locally with:
+
+```sh
+npm run build
+```
+
+Rename the build directory if your app is hosted at a subdirectory:
+
+```sh
+mv build web-app-template
+```
+
+Or enter the build directory if your app is hosted at the root:
+
+```sh
+cd build
+```
+
+Start a static file server:
+
+```sh
+python -m SimpleHTTPServer
+```
+
+Stop the server with `Ctrl + C`.
+
+Open [http://localhost:8000](http://localhost:8000) to view it in the browser.
+
+> If your app is hosted at a subdirectory, open the folder in the directory listing.
+
+Once you're done, clean up the build directory.
+
+If your app is hosted at a subdirectory:
+
+```sh
+rm -rf web-app-template
+```
+
+Or if your app is hosted at the root:
+
+```sh
+rm -rf build
+```
+
+## Layout
+
+Directory structure (dotfiles are omitted):
+
+```sh
+tree -I 'build|node_modules'
+.
+├── LICENSE
+├── README.md
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── index.css
+    ├── index.js
+    ├── reportWebVitals.js
+    └── setupTests.js
+
+2 directories, 13 files
+```
+
+## Migration
+
+Migrate to use [@descriptive/web-scripts](https://www.npmjs.com/package/@descriptive/web-scripts):
+
+```sh
+npx web-scripts-migration
+```
+
+See [blog post](https://remarkablemark.org/blog/2020/06/06/web-app-template/#migration) or [web-scripts-migration](https://www.npmjs.com/package/web-scripts-migration).
+
+## License
+
+[MIT](LICENSE)
